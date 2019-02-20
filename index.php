@@ -1,22 +1,37 @@
 <?php
 require 'vendor/autoload.php';
+require 'app/config.php';
 require 'app/functions.php';
 
 $router = new AltoRouter();
-$router->setBasePath('/blog');
+$router->setBasePath(BASE_URL);
 
-$router->map('GET','/', function() { 
-	echo print_r(get_posts());
-}, 'home');
-
-$router->map('GET','/hello/', function() { 
-	echo 'hello';
-}, 'hello');
+/* 
+	API Routes 
+*/
 
 $router->map('GET','/api/', function() { 
 	header('Content-type: application/json');
 	echo generate_json(get_posts());
 }, 'api');
+
+/* 
+	Front-end Routes 
+*/
+
+if(USE_FRONTEND) {
+	$router->map('GET','/', function() { 
+		require('themes/' . FRONTEND_THEME . '/index.php');
+	}, 'home');
+} else {
+	$router->map('GET','/', function() { 
+		echo 'Front-end off';
+	}, 'home');
+}
+
+/* 
+	Matching
+*/
 
 $match = $router->match();
 
@@ -24,5 +39,5 @@ if($match) {
 	call_user_func_array( $match['target'], $match['params'] ); 
 } else {
 	header("HTTP/1.0 404 Not Found");
-	echo $router->match() . '404';
+	echo '404';
 }

@@ -1,32 +1,26 @@
 <?php
 
-function get_post_names() {
+// Return list of all posts, newest first
+function get_post_list() {
     static $_cache = array();
 
     if(empty($_cache)){
-
-        // Get the names of all the
-        // posts (newest first):
-
         $_cache = array_reverse(glob('posts/*.md'));
     }
 
     return $_cache;
 }
 
-// Return an array of posts.
-// Can return a subset of the results
+// Return an array of posts
 function get_posts($page = 1, $perpage = 10) {
-	
-    $posts = get_post_names();
+    $posts = get_post_list();
 
     // Extract a specific page with results
     $posts = array_slice($posts, ($page-1) * $perpage, $perpage);
 
     $tmp = array();
 
-    foreach($posts as $k=>$v){
-
+    foreach($posts as $k=>$v) {
         $post = new stdClass;
 
         // Extract the date
@@ -47,7 +41,7 @@ function get_posts($page = 1, $perpage = 10) {
     return $tmp;
 }
 
-// Turn an array of posts into a JSON
-function generate_json($posts){
+// Convert array of posts into JSON
+function generate_json($posts) {
     return json_encode($posts, JSON_PRETTY_PRINT);
 }
