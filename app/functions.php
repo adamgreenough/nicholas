@@ -13,6 +13,7 @@ function get_post_list() {
 
 // Return an array of posts
 function get_posts($page = 1, $perpage = 10) {
+    $frontMatter = new Webuni\FrontMatter\FrontMatter();
     $posts = get_post_list();
 
     // Extract a specific page with results
@@ -22,23 +23,31 @@ function get_posts($page = 1, $perpage = 10) {
 
     foreach($posts as $k=>$v) {
         $post = new stdClass;
-
+        $content = $frontMatter->parse(file_get_contents($v));
+       
         // Extract the date
         $arr = explode('_', $v);
         $post->date = strtotime(str_replace('posts/','',$arr[0]));
-
+        
         // Get the contents and convert it to HTML
-        $content = file_get_contents($v);
 
-        // Extract the title and body
-        $arr = explode('</h1>', $content);
-        $post->title = str_replace('<h1>','',$arr[0]);
-        $post->body = $arr[1];
+		$meta = $content->getData();
+		
+		$post->title = $meta['title'];
+        $post->body = convert_markdown($content->getContent());
 
         $tmp[] = $post;
     }
 
     return $tmp;
+}
+
+// Convert markdown to HTML
+function convert_markdown($post) {
+	$md = new ParsedownExtra();	
+	
+	$post = $md->text($post);
+	return $post;
 }
 
 // Convert array of posts into JSON
