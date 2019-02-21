@@ -27,7 +27,9 @@ function get_posts($page = 1, $perpage = 10) {
        
         // Extract the date
         $arr = explode('_', $v);
+        
         $post->date = strtotime(str_replace('posts/','',$arr[0]));
+        $post->slug = basename($arr[1], '.md');
         
         // Get the contents and convert it to HTML
 
