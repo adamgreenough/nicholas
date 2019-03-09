@@ -11,10 +11,35 @@ function get_post_list($slug = '*', $date = '*') {
     return $_cache;
 }
 
+function get_tag_list($tag) {
+	$frontMatter = new Webuni\FrontMatter\FrontMatter();
+	$files = array_reverse(glob('posts/*.md'));
+    
+	foreach($files as $k => $v) {
+	    $post = new stdClass;
+	    $content = $frontMatter->parse(file_get_contents($v));
+	    
+	    $meta = $content->getData();
+		$post->tags = array_map('trim', explode(',', $meta['tags'])); // Split tags on comma, trim whitespace
+		$post->tags = array_map('strtolower', $post->tags);
+	
+		if(in_array(strtolower($tag), $post->tags)) {
+	    	$tmp[] .= $v;
+	    }
+	}
+	
+	return $tmp;	
+}
+
 // Return an array of posts
-function get_posts($page = 1, $perPage = POSTS_PER_PAGE) {
+function get_posts($page = 1, $perPage = POSTS_PER_PAGE, $tag = null) {
     $frontMatter = new Webuni\FrontMatter\FrontMatter();
-    $posts = get_post_list();
+    
+    if ($tag == null) {
+    	$posts = get_post_list();
+    } else {
+	    $posts = get_tag_list($tag);
+	}
 
     // Extract a specific page with results
     $posts = array_slice($posts, ($page - 1) * $perPage, $perPage);
@@ -81,31 +106,7 @@ function generate_json($posts) {
 function load_plugins() {
 	$plugins = array_filter(glob('plugins/*'), 'is_dir');
 	foreach($plugins as $plugin) {
-		$plugin = ltrim($plugin, 'plugins/');
+		$plugin = ltrim($plugin, 'plugins');
 		require 'plugins/' . $plugin . '/' . $plugin . '.php';
 	}
-}
-
-function load_theme($themeName) {
-	require 'themes/' . $themeName . '/functions.php';
-	
-	global $router;
-	
-	$router->map('GET','/', function() { 
-		$posts = get_posts();
-		require 'themes/' . FRONTEND_THEME . '/index.php';
-	}, 'home');
-	
-	$router->map('GET','/[:slug]/', function($slug) { 
-		$post = get_single($slug);
-		require 'themes/' . FRONTEND_THEME . '/single.php';
-	});
-}
-
-function get_header($title = BLOG_NAME, $description = BLOG_DESCRIPTION) {
-	require 'themes/' . FRONTEND_THEME . '/header.php';
-}
-
-function get_footer() {
-	require 'themes/' . FRONTEND_THEME . '/footer.php';
 }

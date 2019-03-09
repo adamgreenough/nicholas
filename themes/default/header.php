@@ -5,5 +5,15 @@
 	<meta charset="UTF-8">
 	<meta name="description" content="<?= $description; ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="<?= get_theme_directory_url(); ?>/assets/normalize.min.css" type="text/css">	
+	<link rel="stylesheet" href="<?= get_theme_directory_url(); ?>/assets/styles.css" type="text/css">
 </head>
 <body>
+	<header class="site-header">
+		<a href="<?= BASE_URL ?>/">
+			<div class="logo"><?= substr(BLOG_NAME, 0, 1) ?></div> <?= BLOG_NAME ?>
+		</a>
+	</header>
+	
+	<div class="container">

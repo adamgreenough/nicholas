@@ -1,11 +1,10 @@
 <?php get_header(); ?>
 
-<h1>Posts tagged "<?= $tag ?>"</h1>
 		
 <?php foreach ($posts as $post) { ?>		
 
 <article class="blog-preview">
-	<a href="/<?= BASE_URL . $post->slug; ?>/">
+	<a href="<?= $post->slug; ?>/">
 		<h2><?= $post->title; ?></h2>
 	</a>
 	<p><?= $post->excerpt; ?></p>
