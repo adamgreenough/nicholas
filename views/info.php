@@ -1,0 +1,2 @@
+<?php
+	load_plugins();

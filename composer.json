@@ -1,0 +1,9 @@
+{
+    "require": {
+        "erusev/parsedown": "^1.7",
+        "erusev/parsedown-extra": "^0.7.1",
+        "altorouter/altorouter": "^1.2",
+        "symfony/yaml": "^4.2",
+        "webuni/front-matter": "^1.1"
+    }
+}
