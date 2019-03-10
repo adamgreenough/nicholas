@@ -13,15 +13,15 @@ I built Nicholas to be everything I wanted from a blogging system and nothing mo
 **[Check out the Nicholas Wiki to get started ⟶](https://github.com/adamgreenough/nicholas/wiki/1.-Install)**
 
 ## Features
-- 💨 Ultra-lightweight with only minimal dependencies
-- 🔒 Inherently secure with no database and no admin panel
-- 🖋 Write with Markdown Extra, HTML or a mixture of both
-- 💻 Super simple read-only JSON API
-- 📖 Optional front-end with ready-to-use theme included
-- 🔏 Optional admin panel plugin available (coming soon) 
-- 📥 JSON & RSS feeds
-- 🔖 Tag support
-- 👋 Portable, drag & drop install with very little configuration
+💨 Ultra-lightweight with only minimal dependencies  
+🔒 Inherently secure with no database and no admin panel  
+🖋 Write with Markdown Extra, HTML or a mixture of both  
+💻 Super simple read-only JSON API  
+📖 Optional front-end with ready-to-use theme included  
+🔏 Optional admin panel plugin available (coming soon)   
+📥 JSON & RSS feeds  
+🔖 Tag support  
+👋 Portable, drag & drop install with very little configuration  
 
 ## Requirements
 - PHP 7.2
