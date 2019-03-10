@@ -18,6 +18,19 @@ p, ul, ol, blockquote {
 	line-height: 1.7;
 }
 
+article img {
+	width: 100%;
+	border-radius: 3px;
+}
+
+pre {
+	overflow-x: scroll;
+	background: #2f2f2f;
+	color: #fff;
+	padding: 30px;
+	border-radius: 3px;
+}
+
 .site-header {
 	font-weight: bold;
 	margin-bottom: 100px;
@@ -81,6 +94,29 @@ a {
 }
 
 hr {
-	border-top: solid 1px #d5d5d5;
+	border-top: solid 1px #cccccc;
 	border-bottom: 0;
 }
+
+table {
+  padding: 0; width: 100%;  }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }

@@ -7,18 +7,30 @@ function load_theme($themeName) {
 	
 	$router->map('GET','/', function() { 
 		$posts = get_posts();
+
 		require 'themes/' . FRONTEND_THEME . '/home.php';
 	}, 'home');
 	
 	$router->map('GET','/tag/[:tag]/', function($tag) { 
 		$posts = get_posts(1, POSTS_PER_PAGE, $tag);
-		require 'themes/' . FRONTEND_THEME . '/tag.php';
+		
+		if($posts) {
+			require 'themes/' . FRONTEND_THEME . '/tag.php';
+		} else {
+			header("HTTP/1.0 404 Not Found");
+			require 'views/404.php';		
+		}
 	});
 	
 	// Must be last to ensure other routes get detected first
 	$router->map('GET','/[:slug]/', function($slug) { 
 		$post = get_single($slug);
-		require 'themes/' . FRONTEND_THEME . '/single.php';
+		if($post->title) {
+			require 'themes/' . FRONTEND_THEME . '/single.php';
+		} else {
+			header("HTTP/1.0 404 Not Found");
+			require 'views/404.php';		
+		}
 	});
 }
 

@@ -30,7 +30,7 @@ $router->map('GET','/api/', function() {
 */
 
 if(USE_FRONTEND) {
-	require 'app/front.php';
+	require 'app/frontend.php';
 	load_theme(FRONTEND_THEME);
 } else {
 	$router->map('GET','/', function() { 

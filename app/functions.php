@@ -40,6 +40,11 @@ function get_posts($page = 1, $perPage = POSTS_PER_PAGE, $tag = null) {
     } else {
 	    $posts = get_tag_list($tag);
 	}
+	
+	// Check we found some posts
+	if(!$posts) {
+	    return false;
+	}
 
     // Extract a specific page with results
     $posts = array_slice($posts, ($page - 1) * $perPage, $perPage);
@@ -73,28 +78,30 @@ function get_single($slug) {
 	$frontMatter = new Webuni\FrontMatter\FrontMatter();
 	$single = get_post_list($slug);
 	
-    $post = new stdClass;
-    $content = $frontMatter->parse(file_get_contents($single[0]));
-    
-    $arr = explode('_', $single[0]);
-    $post->date = strtotime(str_replace('posts/','',$arr[0]));
-    
-    // Get the contents and convert it to HTML
-	$meta = $content->getData();
-	$post->title = $meta['title'];
-	$post->image = $meta['image'];
-	$post->excerpt = $meta['excerpt'];
-	$post->tags = array_map('trim', explode(',', $meta['tags'])); // Split tags on comma, trim whitespace
-    $post->body = convert_markdown($content->getContent());
-    
-    return $post;
+	if($single[0]) { // Check post exists
+	    $post = new stdClass;
+	    $content = $frontMatter->parse(file_get_contents($single[0]));
+	    
+	    $arr = explode('_', $single[0]);
+	    $post->date = strtotime(str_replace('posts/','',$arr[0]));
+	    
+	    // Get the contents and convert it to HTML
+		$meta = $content->getData();
+		$post->title = $meta['title'];
+		$post->image = $meta['image'];
+		$post->excerpt = $meta['excerpt'];
+		$post->tags = array_map('trim', explode(',', $meta['tags'])); // Split tags on comma, trim whitespace
+	    $post->body = convert_markdown($content->getContent());
+	    
+	    return $post;
+    }
 }
 
 // Convert markdown to HTML
-function convert_markdown($post) {
+function convert_markdown($content) {
 	$markdown = new ParsedownExtra();	
-	$post = $markdown->text($post);
-	return $post;
+	$content = $markdown->text($content);
+	return $content;
 }
 
 // Convert array of posts into JSON
