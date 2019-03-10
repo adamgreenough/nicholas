@@ -31,4 +31,4 @@ I built Nicholas to be everything I wanted from a blogging system and nothing mo
 Nicholas features an incredibly simple drag and drop install process. The **[Nicholas Wiki](https://github.com/adamgreenough/nicholas/wiki/1.-Install)** contains installation instructions and documentation. 
 
 ## Contributing
-Contributions welcome! Check the [current issues](https://github.com/adamgreenough/nicholas/issues) for inspiration or why not create and share a new [theme](https://github.com/adamgreenough/nicholas/wiki/4.-Themes)?
+Contributions welcome! Check the **[current issues](https://github.com/adamgreenough/nicholas/issues)** for inspiration or why not create and share a new **[theme](https://github.com/adamgreenough/nicholas/wiki/4.-Themes)**?
