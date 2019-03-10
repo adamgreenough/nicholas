@@ -1,4 +1,4 @@
-<h1 align="center"><img src="https://uploads.adgr.dev/nicholas/nicholas.svg" width="300"></h1>
+<h1 align="center"><img src="https://uploads.adgr.dev/nicholas/nicholas.svg?" width="300"></h1>
 <h3 align="center">Ultra-lightweight, flat-file & nearly-headless blogging system</h3>
 
 <p align="center">
