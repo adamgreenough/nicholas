@@ -1,21 +1,37 @@
-# Nicholas
+<h1 align="center"><img src="https://uploads.adgr.dev/nicholas/nicholas.svg?" width="300"></h1>
+<h3 align="center">Ultra-lightweight, flat-file & nearly-headless blogging system</h3>
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2a961c32f3a642c7935c82b5995d03ec)](https://www.codacy.com/app/xadz/nicholas?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=xadz/nicholas&amp;utm_campaign=Badge_Grade)
+<p align="center">
+<img src="https://img.shields.io/github/repo-size/adamgreenough/nicholas.svg?style=popout" alt="GitHub repo size in bytes">
+<img alt="GitHub issues" src="https://img.shields.io/github/issues/adamgreenough/nicholas.svg?style=popout"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/adamgreenough/nicholas.svg?style=popout"> <img alt="GitHub stars" src="https://img.shields.io/github/stars/adamgreenough/nicholas.svg?style=popout"> <img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/adamgreenough/nicholas/total.svg?style=popout"> <img alt="License GPL-3.0" src="https://img.shields.io/badge/license-GPL--3.0-red.svg">
+</p>
 
----
+<h2></h2>
 
-Under development! Watch this space.
+I built Nicholas to be everything I wanted from a blogging system and nothing more. Easy to write, flexible to integrate, quick to set-up, fast to load and secure by default. Be in total control of your data with posts written in standard formats that are easy to switch between systems in future. 
+
+**[Check out the Nicholas Wiki to get started ⟶](https://github.com/adamgreenough/nicholas/wiki/1.-Install)**
 
 ## Features
-- Ultra-lightweight
-- Write with Markdown Extra
-- Flat-file, no database
-- API-first
-- Optional front-end
-- Optional admin panel (coming soon) 
-- JSON & RSS feeds
-- Categories
+💨 Ultra-lightweight with only minimal dependencies  
+🔒 Inherently secure with no database and no admin panel  
+🖋 Write with Markdown Extra, HTML or a mixture of both  
+💻 Super simple read-only JSON API  
+📖 Optional front-end with ready-to-use theme included  
+🔏 Optional admin panel plugin available (coming soon)   
+📥 JSON & RSS feeds  
+🔖 Tag support  
+👋 Portable, drag & drop install with very little configuration  
 
 ## Requirements
 - PHP 7.2
 - mod_rewrite
+
+## Getting Started
+Nicholas features an incredibly simple drag and drop install process. The **[Nicholas Wiki](https://github.com/adamgreenough/nicholas/wiki/1.-Install)** contains installation instructions and documentation. 
+
+## Contributing
+Contributions welcome! Check the **[current issues](https://github.com/adamgreenough/nicholas/issues)** for inspiration or why not create and share a new **[theme](https://github.com/adamgreenough/nicholas/wiki/4.-Themes)**?
+
+## License
+&copy; Adam Greenough 2019. Licensed under the GNU General Public License v3.0.
