@@ -4,7 +4,7 @@
 <?php foreach ($posts as $post) { ?>		
 
 <article class="blog-preview">
-	<a href="<?= $post->slug; ?>/">
+	<a href="/<?= BASE_URL . $post->slug; ?>/">
 		<h2><?= $post->title; ?></h2>
 	</a>
 	<p><?= $post->excerpt; ?></p>
@@ -12,8 +12,15 @@
 </article>
 
 <?php } ?>
-		
-<?php get_next_page_link($page, $posts); ?>
-<?php get_prev_page_link($page, $posts); ?>
+
+<div class="pagination">
+	<div class="prev">
+		<?php get_prev_page_link($page, $posts); ?>	
+	</div>
+	<div class="next">
+		<?php get_next_page_link($page, $posts); ?>
+	</div>
+</div>
+
 
 <?php get_footer(); ?>

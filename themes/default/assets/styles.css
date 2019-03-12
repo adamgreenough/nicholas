@@ -98,6 +98,11 @@ hr {
 	border-bottom: 0;
 }
 
+.pagination {
+	display: flex;
+	justify-content: space-between;
+}
+
 table {
   padding: 0; width: 100%;  }
   table tr {
