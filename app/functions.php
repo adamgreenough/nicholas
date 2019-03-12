@@ -109,6 +109,27 @@ function generate_json($posts) {
     return json_encode($posts, JSON_PRETTY_PRINT);
 }
 
+// Convert array of posts into RSS
+function generate_rss($posts) {
+    $feed = new Suin\RSSWriter\Feed();
+    $channel = new Suin\RSSWriter\Channel();
+
+    $channel
+        ->title(BLOG_NAME)
+        ->description(BLOG_DESCRIPTION)
+        ->appendTo($feed);
+
+    foreach($posts as $p){
+        $item = new Suin\RSSWriter\Item();
+        $item
+            ->title($p->title)
+            ->description($p->body)
+            ->appendTo($channel);
+    }
+
+    return $feed;
+}
+
 // Load plugins from /plugins/ folder 
 function load_plugins() {
 	$plugins = array_filter(glob('plugins/*'), 'is_dir');

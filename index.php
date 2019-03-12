@@ -1,7 +1,7 @@
 <?php
-require 'vendor/autoload.php';
-require 'config.php';
-require 'app/functions.php';
+require_once 'vendor/autoload.php';
+require_once 'config.php';
+require_once 'app/functions.php';
 
 $router = new AltoRouter();
 $router->setBasePath(BASE_URL);
@@ -17,13 +17,20 @@ $router->map('GET','/info/', function() {
 });
 
 /* 
-	API Routes 
+	Feeds
 */
 
-$router->map('GET','/api/', function() { 
+$router->map('GET','/json/', function() { 
 	header('Content-type: application/json');
 	echo generate_json(get_posts());
 });
+
+$router->map('GET','/rss/', function() { 
+	header('Content-type: application/json');
+	echo generate_rss(get_posts());
+});
+
+
 
 /* 
 	Front-end Routes 
