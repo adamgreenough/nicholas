@@ -13,6 +13,8 @@
 </article>
 
 <?php } ?>
-		
+
+<?php get_next_page_link($page, $posts, $tag); ?>
+<?php get_prev_page_link($page, $posts, $tag); ?>		
 
 <?php get_footer(); ?>

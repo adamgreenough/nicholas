@@ -13,5 +13,7 @@
 
 <?php } ?>
 		
+<?php get_next_page_link($page, $posts); ?>
+<?php get_prev_page_link($page, $posts); ?>
 
 <?php get_footer(); ?>

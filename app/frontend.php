@@ -5,14 +5,8 @@ function load_theme($themeName) {
 	
 	global $router;
 	
-	$router->map('GET','/', function() { 
-		$posts = get_posts();
-
-		require 'themes/' . FRONTEND_THEME . '/home.php';
-	}, 'home');
-	
-	$router->map('GET','/tag/[:tag]/', function($tag) { 
-		$posts = get_posts(1, POSTS_PER_PAGE, $tag);
+	$router->map('GET','/tag/[:tag]/[*:page]?/', function($tag, $page = 1) { 
+		$posts = get_posts($page, POSTS_PER_PAGE, $tag);
 		
 		if($posts) {
 			require 'themes/' . FRONTEND_THEME . '/tag.php';
@@ -21,6 +15,12 @@ function load_theme($themeName) {
 			require 'views/404.php';		
 		}
 	});
+	
+	$router->map('GET','/[*:page]?/', function($page = 1) { 
+		$posts = get_posts($page);
+
+		require 'themes/' . FRONTEND_THEME . '/home.php';
+	}, 'home');
 	
 	// Must be last to ensure other routes get detected first
 	$router->map('GET','/[:slug]/', function($slug) { 
@@ -53,4 +53,27 @@ function display_tag_list($tags) {
 
 function get_theme_directory_url() {
 	return '/' . BASE_URL . 'themes/' . FRONTEND_THEME;
+}
+
+function get_next_page_link($page, $posts, $tag = '') {
+	if($tag) {
+		$count = count(get_tag_list($tag));
+		$tag = 'tag/' . $tag . '/';	
+	} else {
+		$count = count(get_post_list());
+	}
+	
+	if(($count / POSTS_PER_PAGE) > $page) {
+		echo '<a href="/' . $tag . BASE_URL . ($page + 1) . '/">Next Page</a>';
+	}
+}
+
+function get_prev_page_link($page, $posts, $tag = '') {
+	if($tag) {
+		$tag = 'tag/' . $tag . '/';
+	}
+	
+	if($page > 1) {
+		echo '<a href="/' . $tag . BASE_URL . ($page - 1) . '/">Prev Page</a>';
+	}
 }

@@ -4,7 +4,7 @@
 	ENVIRONMENT SETTINGS 
 */
 const BASE_URL = ''; // If your nick installation is not in the web root, enter your folder name here with no trailing slash (eg. /blog)
-const POSTS_PER_PAGE = 10;
+const POSTS_PER_PAGE = 1;
 
 
 /* 
