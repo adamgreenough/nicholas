@@ -1,18 +1,34 @@
 <?php
 	
-/* 
-	ENVIRONMENT SETTINGS 
-*/
-const BASE_URL = ''; // If your nick installation is not in the web root, enter your folder name here with no trailing slash (eg. /blog)
+/* ============================================
+   Environment Settings
+ ============================================ */
+ 
+// If your nick installation is not in the web root,
+// enter your folder name here with no trailing slash (eg. /blog)
+const BASE_URL = '';
+
+// Posts per page
 const POSTS_PER_PAGE = 2;
 
+// The name of your blog
+const BLOG_NAME = 'Nicholas Demo'; 
 
-/* 
-	FRONT-END OPTIONS 
-*/
-const USE_FRONTEND = true; // Use the front-end (true) or API-only (false)?
-const FRONTEND_THEME = 'default'; // Front-end options, ignore if $useFrontend is set to false
-const BLOG_DESCRIPTION = 'Welcome to my amazing blog powered by Nicholas'; // A short description of your blog
-const BLOG_NAME = 'Nicholas Demo'; // The name of your blog
+// A short description of your blog
+const BLOG_DESCRIPTION = 'Welcome to my amazing blog powered by Nicholas'; 
+
+/* ============================================
+   Front-end Settings
+ ============================================ */
+ 
+// Use the front-end (true) or API-only (false)?
+const USE_FRONTEND = true; 
+
+// Front-end theme
+const FRONTEND_THEME = 'default'; 
+
+
+
+
 
 

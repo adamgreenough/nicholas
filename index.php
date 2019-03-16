@@ -2,13 +2,14 @@
 require_once 'vendor/autoload.php';
 require_once 'config.php';
 require_once 'app/functions.php';
+require_once 'app/api.php';
 
 $router = new AltoRouter();
 $router->setBasePath(BASE_URL);
 
-/* 
-	Load Plugins
-*/
+/* ============================================
+   Plugins
+ ============================================ */
 
 load_plugins();
 
@@ -16,9 +17,9 @@ $router->map('GET','/info/', function() {
 	require 'views/info.php';
 });
 
-/* 
-	Feeds
-*/
+/* ============================================
+   Subscription Feeds
+ ============================================ */
 
 $router->map('GET','/json/', function() { 
 	header('Content-type: application/json');
@@ -30,11 +31,9 @@ $router->map('GET','/rss/', function() {
 	echo generate_rss(get_posts());
 });
 
-
-
-/* 
-	Front-end Routes 
-*/
+/* ============================================
+   Front-end
+ ============================================ */
 
 if(USE_FRONTEND) {
 	require 'app/frontend.php';
@@ -45,9 +44,23 @@ if(USE_FRONTEND) {
 	});
 }
 
-/* 
-	Matching
-*/
+/* ============================================
+   API
+ ============================================ */
+
+$router->map('GET','/api/feed/', function() { 
+	header('Content-type: application/json');
+	echo generate_json(api_feed());
+});
+
+$router->map('GET','/api/single/', function() { 
+	header('Content-type: application/json');
+	echo generate_json(api_single());
+});
+
+/* ============================================
+   Matching
+ ============================================ */
 
 $match = $router->match();
 

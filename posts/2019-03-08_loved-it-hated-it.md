@@ -1,6 +1,6 @@
 ---
 title: Loved it, hated it, loved it, hated it
-tags: Cats, Wool
+tags: Cats, Wool, Tag with Space
 excerpt: I haven't decided whether or not I wanna go out gate keepers so show belly. Purrr purr littel cat, little cat purr purr when owners are asleep, cry for no apparent reason or leave hair everywhere, but howl uncontrollably for no reason or howl uncontrollably for no reason. 
 image: http://placekitten.com/1200/800
 ---

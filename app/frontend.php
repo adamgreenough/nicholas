@@ -7,6 +7,7 @@ function load_theme($themeName) {
 	
 	$router->map('GET','/tag/[:tag]/[i:page]?/', function($tag, $page = 1) { 
 		$posts = get_posts($page, POSTS_PER_PAGE, $tag);
+		$tag = str_replace('%20', ' ', $tag);
 		
 		if($posts) {
 			require 'themes/' . FRONTEND_THEME . '/tag.php';
