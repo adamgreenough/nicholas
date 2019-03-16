@@ -8,7 +8,7 @@
 
 <h2></h2>
 
-I built Nicholas to be everything I wanted from a blogging system and nothing more. Easy to write, flexible to integrate, quick to set-up, fast to load and secure by default. Be in total control of your data with posts written in standard formats that are easy to switch between systems in future. 
+I built Nicholas to be everything I wanted from a blogging system and nothing more. A pleasure to write, flexible to integrate, quick to set-up, fast to load and secure by default.
 
 **[Check out the Nicholas Wiki to get started ⟶](https://github.com/adamgreenough/nicholas/wiki/1.-Install)**
 
