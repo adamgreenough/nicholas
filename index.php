@@ -40,7 +40,7 @@ if(USE_FRONTEND) {
 	load_theme(FRONTEND_THEME);
 } else {
 	$router->map('GET','/', function() { 
-		echo 'Front-end off';
+		require 'views/default.php';
 	});
 }
 
