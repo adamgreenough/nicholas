@@ -8,6 +8,6 @@ function api_feed() {
 }
 
 function api_single() {
-	$slut = $_GET['slug'] ?? null;
+	$slug = $_GET['slug'] ?? null;
 	return get_single($slug);
 }
