@@ -15,10 +15,6 @@ $router->setBasePath(BASE_URL);
 
 load_plugins();
 
-$router->map('GET','/info/', function() { 
-	require 'views/info.php';
-});
-
 /* ============================================
    Subscription Feeds
  ============================================ */
