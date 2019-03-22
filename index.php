@@ -1,7 +1,9 @@
 <?php
 require_once 'vendor/autoload.php';
 require_once 'config.php';
-require_once 'app/functions.php';
+require_once 'app/posts.php';
+require_once 'app/plugins.php';
+require_once 'app/generate.php';
 require_once 'app/api.php';
 
 $router = new AltoRouter();
@@ -40,6 +42,7 @@ if(!USE_FRONTEND) {
 		require 'views/default.php';
 	});
 } else {
+	require_once 'app/frontend.php';
 	require_once 'themes/' . FRONTEND_THEME . '/functions.php';
 	
 	$router->map('GET','/tag/[:tag]/[i:page]?/', function($tag, $page = 1) { 
