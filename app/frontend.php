@@ -1,39 +1,4 @@
 <?php
-	
-function load_theme($themeName) {
-	require 'themes/' . $themeName . '/functions.php';
-	
-	global $router;
-	
-	$router->map('GET','/tag/[:tag]/[i:page]?/', function($tag, $page = 1) { 
-		$posts = get_posts($page, POSTS_PER_PAGE, $tag);
-		$tag = str_replace('%20', ' ', $tag);
-		
-		if($posts) {
-			require 'themes/' . FRONTEND_THEME . '/tag.php';
-		} else {
-			header("HTTP/1.0 404 Not Found");
-			require 'views/404.php';		
-		}
-	});
-	
-	$router->map('GET','/[i:page]?/', function($page = 1) { 
-		$posts = get_posts($page);
-
-		require 'themes/' . FRONTEND_THEME . '/home.php';
-	}, 'home');
-	
-	// Must be last to ensure other routes get detected first
-	$router->map('GET','/[:slug]/', function($slug) { 
-		$post = get_single($slug);
-		if($post->title) {
-			require 'themes/' . FRONTEND_THEME . '/single.php';
-		} else {
-			header("HTTP/1.0 404 Not Found");
-			require 'views/404.php';		
-		}
-	});
-}
 
 function get_header($title = BLOG_NAME, $description = BLOG_DESCRIPTION) {
 	require 'themes/' . FRONTEND_THEME . '/header.php';

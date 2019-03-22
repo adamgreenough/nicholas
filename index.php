@@ -35,12 +35,40 @@ $router->map('GET','/rss/', function() {
    Front-end
  ============================================ */
 
-if(USE_FRONTEND) {
-	require 'app/frontend.php';
-	load_theme(FRONTEND_THEME);
-} else {
+if(!USE_FRONTEND) {
 	$router->map('GET','/', function() { 
 		require 'views/default.php';
+	});
+} else {
+	require_once 'themes/' . FRONTEND_THEME . '/functions.php';
+	
+	$router->map('GET','/tag/[:tag]/[i:page]?/', function($tag, $page = 1) { 
+		$posts = get_posts($page, POSTS_PER_PAGE, $tag);
+		$tag = str_replace('%20', ' ', $tag);
+		
+		if($posts) {
+			require 'themes/' . FRONTEND_THEME . '/tag.php';
+		} else {
+			header("HTTP/1.0 404 Not Found");
+			require 'views/404.php';		
+		}
+	});
+	
+	$router->map('GET','/[i:page]?/', function($page = 1) { 
+		$posts = get_posts($page);
+
+		require 'themes/' . FRONTEND_THEME . '/home.php';
+	}, 'home');
+	
+	// Must be last to ensure other routes get detected first
+	$router->map('GET','/[:slug]/', function($slug) { 
+		$post = get_single($slug);
+		if($post->title) {
+			require 'themes/' . FRONTEND_THEME . '/single.php';
+		} else {
+			header("HTTP/1.0 404 Not Found");
+			require 'views/404.php';		
+		}
 	});
 }
 

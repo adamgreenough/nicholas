@@ -1,7 +1,7 @@
 <!doctype HTML>
 <html>
 <head>
-	<title>Error 404</title>
+	<title><?= BLOG_NAME ?></title>
 	
 	<style>
 		* {
