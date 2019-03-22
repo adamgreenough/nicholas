@@ -95,5 +95,10 @@ if($match) {
 	call_user_func_array( $match['target'], $match['params'] ); 
 } else {
 	header("HTTP/1.0 404 Not Found");
-	require 'views/404.php';
+	
+	if(USE_FRONTEND && file_exists('themes/' . FRONTEND_THEME . '/404.php') {
+		require 'themes/' . FRONTEND_THEME . '/404.php';
+	} else {
+		require 'views/404.php';
+	}
 }
