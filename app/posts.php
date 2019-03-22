@@ -14,9 +14,6 @@ function get_post_list($slug = '*', $date = '*') {
 function get_tag_list($tag) {
 	$frontMatter = new Webuni\FrontMatter\FrontMatter();
 	$files = array_reverse(glob('posts/*.md'));
-	
-	// TODO: Fix for tags with spaces, thinking there must be a better way?
-	$tag = str_replace('%20', ' ', $tag);
     
 	foreach($files as $k => $v) {
 	    $post = new stdClass;
@@ -26,7 +23,7 @@ function get_tag_list($tag) {
 		$post->tags = array_map('trim', explode(',', $meta['tags'])); // Split tags on comma, trim whitespace
 		$post->tags = array_map('strtolower', $post->tags);
 	
-		if(in_array(strtolower($tag), $post->tags)) {
+		if(in_array(strtolower(urldecode($tag)), $post->tags)) {
 	    	$tmp[] .= $v;
 	    }
 	}

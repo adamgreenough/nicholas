@@ -33,6 +33,7 @@ $router->map('GET','/rss/', function() {
    Front-end
  ============================================ */
 
+// If the front-end option in config is set to false, skip the loading of frontend functionality
 if(!USE_FRONTEND) {
 	$router->map('GET','/', function() { 
 		require 'views/default.php';
