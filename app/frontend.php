@@ -15,7 +15,7 @@ function error_404() {
 function get_theme_directory_url() {
 	$config = include('config.php'); 
 	
-	return '/' . $config['base_url'] . 'themes/' . $config['frontend_theme'];
+	return $config['base_url'] . '/themes/' . $config['frontend_theme'];
 }
 
 function get_header($title = null, $description = null) {
@@ -49,11 +49,11 @@ function get_pagination_link($page, $posts, $tag = '') {
 	}
 	
 	if(($count / $config['posts_per_page']) > $page) {
-		$pagination['next'] = '/' . $tag . $config['base_url'] . ($page + 1) . '/';
+		$pagination['next'] = $config['base_url'] . '/' . $tag . ($page + 1) . '/';
 	}
 	
 	if($page > 1) {
-		$pagination['prev'] = '/' . $tag . $config['base_url'] . ($page - 1) . '/';
+		$pagination['prev'] = $config['base_url'] . '/' . $tag . ($page - 1) . '/';
 	}
 	
 	return $pagination;

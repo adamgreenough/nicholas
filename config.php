@@ -3,7 +3,7 @@
 return array(	
 
 /* ============================================
-   Environment Settings
+   Blog Settings
  ============================================ */
 
 // Posts per page
@@ -29,9 +29,9 @@ return array(
    Advanced Settings
  ============================================ */
 
-// If your nick installation is not in the web root,
-// enter your folder name here with no trailing slash (eg. /blog)
-'base_url' => '',
+// If your Nicholas installation is not in the web root,
+// enter your folder name here with a preceding slash (eg. /blog)
+'base_url' => '/blog',
 
 );
 

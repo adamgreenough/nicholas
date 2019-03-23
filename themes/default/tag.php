@@ -2,19 +2,29 @@
 
 <h1>Posts tagged "<?= $tag ?>"</h1>
 		
-<?php foreach ($posts as $post) { ?>		
-
-<article class="blog-preview">
-	<a href="/<?= BASE_URL . $post->slug; ?>/">
-		<h2><?= $post->title; ?></h2>
-	</a>
-	<p><?= $post->excerpt; ?></p>
-	<p class="small"><?= date('jS F Y', $post->date); ?> • Filed under <?= display_tag_list($post->tags); ?></p>
-</article>
-
+<?php foreach($posts as $post) { ?>		
+	<article class="blog-preview">
+		<a href="<?= $config['base_url'] . '/' . $post->slug; ?>/">
+			<h2><?= $post->title; ?></h2>
+		</a>
+		<p><?= $post->excerpt; ?></p>
+		<p class="small"><?= date('jS F Y', $post->date); ?> • Filed under <?= display_tag_list($post->tags); ?></p>
+	</article>
 <?php } ?>
 
-<?php get_pagination_link($page, $posts, $tag)['next']; ?>
-<?php get_pagination_link($page, $posts, $tag)['prev']; ?>		
+<div class="pagination">
+	<div class="prev">
+		<?php 
+			$prevLink = get_pagination_link($page, $posts, $tag)['prev'];
+			if($prevLink) { echo '<a href="' . $prevLink . '" title="Previous Page">&laquo; Newer Posts </a>'; }
+		?>	
+	</div>
+	<div class="next">
+		<?php 
+			$nextLink = get_pagination_link($page, $posts, $tag)['next'];
+			if($nextLink) { echo '<a href="' . $nextLink . '" title="Next Page">Older Posts &raquo;</a>'; }
+		?>	
+	</div>
+</div>
 
 <?php get_footer(); ?>

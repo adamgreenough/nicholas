@@ -4,7 +4,7 @@
 <?php foreach ($posts as $post) { ?>		
 
 <article class="blog-preview">
-	<a href="/<?= BASE_URL . $post->slug; ?>/">
+	<a href="<?= $config['base_url'] . '/' . $post->slug; ?>/">
 		<h2><?= $post->title; ?></h2>
 	</a>
 	<p><?= $post->excerpt; ?></p>

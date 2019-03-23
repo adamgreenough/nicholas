@@ -11,7 +11,7 @@
 </head>
 <body>
 	<header class="site-header">
-		<a href="<?= BASE_URL ?>/">
+		<a href="<?= $config['base_url'] ?>/">
 			<div class="logo"><?= substr($config['blog_name'], 0, 1) ?></div> <?= $config['blog_name'] ?>
 		</a>
 	</header>
