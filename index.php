@@ -49,16 +49,19 @@ if(!USE_FRONTEND) {
 		if($posts) {
 			require 'themes/' . FRONTEND_THEME . '/tag.php';
 		} else {
-			header("HTTP/1.0 404 Not Found");
-			require 'views/404.php';		
+			error_404();
 		}
 	});
 	
 	$router->map('GET','/[i:page]?/', function($page = 1) { 
 		$posts = get_posts($page);
 
-		require 'themes/' . FRONTEND_THEME . '/home.php';
-	}, 'home');
+		if($posts) {
+			require 'themes/' . FRONTEND_THEME . '/home.php';
+		} else {
+			error_404();
+		}
+	});
 	
 	// Must be last to ensure other routes get detected first
 	$router->map('GET','/[:slug]/', function($slug) { 
@@ -66,8 +69,7 @@ if(!USE_FRONTEND) {
 		if($post->title) {
 			require 'themes/' . FRONTEND_THEME . '/single.php';
 		} else {
-			header("HTTP/1.0 404 Not Found");
-			require 'views/404.php';		
+			error_404();	
 		}
 	});
 }
@@ -95,11 +97,5 @@ $match = $router->match();
 if($match) {
 	call_user_func_array( $match['target'], $match['params'] ); 
 } else {
-	header("HTTP/1.0 404 Not Found");
-	
-	if(USE_FRONTEND && file_exists('themes/' . FRONTEND_THEME . '/404.php')) {
-		require 'themes/' . FRONTEND_THEME . '/404.php';
-	} else {
-		require 'views/404.php';
-	}
+	error_404();
 }
