@@ -7,7 +7,7 @@ return array(
  ============================================ */
 
 // Posts per page
-'posts_per_page' => 2,
+'posts_per_page' => 4,
 
 // The name of your blog
 'blog_name' => 'Nicholas Demo',
@@ -19,11 +19,14 @@ return array(
    Front-end Settings
  ============================================ */
  
- // Front-end theme
-'frontend_theme' => 'default',
- 
 // Use the front-end (true) or API-only (false)?
 'use_frontend' => true,
+
+// Front-end theme
+'frontend_theme' => 'default',
+ 
+// Date format
+'date_format' => 'jS F Y',
 
 /* ============================================
    Advanced Settings
@@ -31,7 +34,7 @@ return array(
 
 // If your Nicholas installation is not in the web root,
 // enter your folder name here with a preceding slash (eg. /blog)
-'base_url' => '/blog',
+'base_url' => ''
 
 );
 

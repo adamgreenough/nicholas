@@ -8,7 +8,7 @@
 		<h2><?= $post->title; ?></h2>
 	</a>
 	<p><?= $post->excerpt; ?></p>
-	<p class="small"><?= date('jS F Y', $post->date); ?> • Filed under <?= display_tag_list($post->tags); ?></p>
+	<p class="small"><?= date($config['date_format'], $post->date); ?> • Filed under <?= display_tag_list($post->tags); ?></p>
 </article>
 
 <?php } ?>
