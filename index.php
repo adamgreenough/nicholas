@@ -1,13 +1,14 @@
 <?php
 require_once 'vendor/autoload.php';
-require_once 'config.php';
 require_once 'app/posts.php';
 require_once 'app/plugins.php';
 require_once 'app/generate.php';
 require_once 'app/api.php';
 
+$config = include('config.php');
+
 $router = new AltoRouter();
-$router->setBasePath(BASE_URL);
+$router->setBasePath($config['base_url']);
 
 /* ============================================
    Plugins
@@ -34,30 +35,32 @@ $router->map('GET','/rss/', function() {
  ============================================ */
 
 // If the front-end option in config is set to false, skip the loading of frontend functionality
-if(!USE_FRONTEND) {
+if(!$config['use_frontend']) {
 	$router->map('GET','/', function() { 
 		require 'views/default.php';
 	});
 } else {
 	require_once 'app/frontend.php';
-	require_once 'themes/' . FRONTEND_THEME . '/functions.php';
+	require_once 'themes/' . $config['frontend_theme'] . '/functions.php';
 	
-	$router->map('GET','/tag/[:tag]/[i:page]?/', function($tag, $page = 1) { 
-		$posts = get_posts($page, POSTS_PER_PAGE, $tag);
+	$router->map('GET','/tag/[:tag]/[i:page]?/', function($tag, $page = 1) {
+		$config = include('config.php'); 
+		$posts = get_posts($page, $config['posts_per_page'], $tag);
 		$tag = str_replace('%20', ' ', $tag);
 		
 		if($posts) {
-			require 'themes/' . FRONTEND_THEME . '/tag.php';
+			include 'themes/' . $config['frontend_theme'] . '/tag.php';
 		} else {
 			error_404();
 		}
 	});
 	
-	$router->map('GET','/[i:page]?/', function($page = 1) { 
+	$router->map('GET','/[i:page]?/', function($page = 1) {
+		$config = include('config.php'); 
 		$posts = get_posts($page);
 
 		if($posts) {
-			require 'themes/' . FRONTEND_THEME . '/home.php';
+			include 'themes/' . $config['frontend_theme'] . '/home.php';
 		} else {
 			error_404();
 		}
@@ -65,9 +68,10 @@ if(!USE_FRONTEND) {
 	
 	// Must be last to ensure other routes get detected first
 	$router->map('GET','/[:slug]/', function($slug) { 
+		$config = include('config.php');
 		$post = get_single($slug);
 		if($post->title) {
-			require 'themes/' . FRONTEND_THEME . '/single.php';
+			include 'themes/' . $config['frontend_theme'] . '/single.php';
 		} else {
 			error_404();	
 		}

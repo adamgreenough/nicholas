@@ -1,38 +1,46 @@
 <?php
 
-function error_404() {	
+function error_404() {
+	$config = include('config.php'); 	
 	header("HTTP/1.0 404 Not Found");
 	
 	// If there's a custom 404 template in the theme, use that, if not, use default
-	if(USE_FRONTEND && file_exists('themes/' . FRONTEND_THEME . '/404.php')) {
-		require 'themes/' . FRONTEND_THEME . '/404.php';
+	if($config['use_frontend'] && file_exists('themes/' . $config['frontend_theme'] . '/404.php')) {
+		require 'themes/' . $config['frontend_theme'] . '/404.php';
 	} else {
 		require 'views/404.php';
 	}
 }
 
 function get_theme_directory_url() {
-	return '/' . BASE_URL . 'themes/' . FRONTEND_THEME;
+	$config = include('config.php'); 
+	
+	return '/' . $config['base_url'] . 'themes/' . $config['frontend_theme'];
 }
 
-function get_header($title = BLOG_NAME, $description = BLOG_DESCRIPTION) {
-	require 'themes/' . FRONTEND_THEME . '/header.php';
+function get_header($title = null, $description = null) {
+	$config = include('config.php'); 
+	
+	if($title == null) {
+		$title = $config['blog_name'];
+	}
+	
+	if($description == null) {
+		$title = $config['blog_description'];
+	}
+	
+	require 'themes/' . $config['frontend_theme'] . '/header.php';
 }
 
 function get_footer() {
-	require 'themes/' . FRONTEND_THEME . '/footer.php';
-}
-
-function display_tag_list($tags) {
-	foreach ($tags as $tag) {
-		$output .= 	'<a href="/' . BASE_URL . 'tag/' . strtolower($tag) . '/" title="Posts tagged ' . $tag . '">' . $tag . '</a>, ';
-	}
+	$config = include('config.php'); 
 	
-	$output = rtrim($output, ', ');
-	return $output;
+	require 'themes/' . $config['frontend_theme'] . '/footer.php';
 }
 
-function get_next_page_link($page, $posts, $tag = '', $text = 'Next Page') {
+function get_pagination_link($page, $posts, $tag = '') {
+	$config = include('config.php'); 
+	
 	if($tag) {
 		$count = count(get_tag_list($tag));
 		$tag = 'tag/' . $tag . '/';	
@@ -40,17 +48,13 @@ function get_next_page_link($page, $posts, $tag = '', $text = 'Next Page') {
 		$count = count(get_post_list());
 	}
 	
-	if(($count / POSTS_PER_PAGE) > $page) {
-		echo '<a href="/' . $tag . BASE_URL . ($page + 1) . '/" title="Next Page">' . $text . '</a>';
-	}
-}
-
-function get_prev_page_link($page, $posts, $tag = '', $text = 'Previous Page') {
-	if($tag) {
-		$tag = 'tag/' . $tag . '/';
+	if(($count / $config['posts_per_page']) > $page) {
+		$pagination['next'] = '/' . $tag . $config['base_url'] . ($page + 1) . '/';
 	}
 	
 	if($page > 1) {
-		echo '<a href="/' . $tag . BASE_URL . ($page - 1) . '/" title="Previous Page">' . $text . '</a>';
+		$pagination['prev'] = '/' . $tag . $config['base_url'] . ($page - 1) . '/';
 	}
+	
+	return $pagination;
 }

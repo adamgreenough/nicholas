@@ -1,31 +1,39 @@
 <?php
-	
+
+return array(	
+
 /* ============================================
    Environment Settings
  ============================================ */
- 
-// If your nick installation is not in the web root,
-// enter your folder name here with no trailing slash (eg. /blog)
-const BASE_URL = '';
 
 // Posts per page
-const POSTS_PER_PAGE = 2;
+'posts_per_page' => 2,
 
 // The name of your blog
-const BLOG_NAME = 'Nicholas Demo'; 
+'blog_name' => 'Nicholas Demo',
 
 // A short description of your blog
-const BLOG_DESCRIPTION = 'Welcome to my amazing blog powered by Nicholas'; 
+'blog_description' => 'Welcome to my amazing blog powered by Nicholas',
 
 /* ============================================
    Front-end Settings
  ============================================ */
  
+ // Front-end theme
+'frontend_theme' => 'default',
+ 
 // Use the front-end (true) or API-only (false)?
-const USE_FRONTEND = true; 
+'use_frontend' => true,
 
-// Front-end theme
-const FRONTEND_THEME = 'default'; 
+/* ============================================
+   Advanced Settings
+ ============================================ */
+
+// If your nick installation is not in the web root,
+// enter your folder name here with no trailing slash (eg. /blog)
+'base_url' => '',
+
+);
 
 
 

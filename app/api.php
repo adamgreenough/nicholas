@@ -2,7 +2,7 @@
 	
 function api_feed() {
 	$page = $_GET['page'] ?? 1;
-	$perPage = $_GET['perpage'] ?? POSTS_PER_PAGE;
+	$perPage = $_GET['perpage'] ?? $config['posts_per_page'];
 	$tag = $_GET['tag'] ?? null;
 	return get_posts($page, $perPage, $tag);
 }

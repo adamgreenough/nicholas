@@ -15,12 +15,20 @@
 
 <div class="pagination">
 	<div class="prev">
-		<?php get_prev_page_link($page, $posts); ?>	
+		<?php 
+			$prevLink = get_pagination_link($page, $posts)['prev'];
+			if($prevLink) { echo '<a href="' . $prevLink . '" title="Previous Page">&laquo; Newer Posts </a>'; }
+		?>	
 	</div>
 	<div class="next">
-		<?php get_next_page_link($page, $posts); ?>
+		<?php 
+			$nextLink = get_pagination_link($page, $posts)['next'];
+			if($nextLink) { echo '<a href="' . $nextLink . '" title="Next Page">Older Posts &raquo;</a>'; }
+		?>	
 	</div>
 </div>
+
+
 
 
 <?php get_footer(); ?>

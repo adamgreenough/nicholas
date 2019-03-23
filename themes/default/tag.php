@@ -14,7 +14,7 @@
 
 <?php } ?>
 
-<?php get_next_page_link($page, $posts, $tag); ?>
-<?php get_prev_page_link($page, $posts, $tag); ?>		
+<?php get_pagination_link($page, $posts, $tag)['next']; ?>
+<?php get_pagination_link($page, $posts, $tag)['prev']; ?>		
 
 <?php get_footer(); ?>
