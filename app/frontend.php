@@ -1,5 +1,9 @@
 <?php
 
+function get_theme_directory_url() {
+	return '/' . BASE_URL . 'themes/' . FRONTEND_THEME;
+}
+
 function get_header($title = BLOG_NAME, $description = BLOG_DESCRIPTION) {
 	require 'themes/' . FRONTEND_THEME . '/header.php';
 }
@@ -15,10 +19,6 @@ function display_tag_list($tags) {
 	
 	$output = rtrim($output, ', ');
 	return $output;
-}
-
-function get_theme_directory_url() {
-	return '/' . BASE_URL . 'themes/' . FRONTEND_THEME;
 }
 
 function get_next_page_link($page, $posts, $tag = '', $text = 'Next Page') {
