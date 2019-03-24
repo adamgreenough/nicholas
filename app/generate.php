@@ -26,9 +26,12 @@ function generate_rss($posts) {
 
     foreach($posts as $p){
         $item = new Suin\RSSWriter\Item();
+        $url = $config['blog_url'] . '/' . $p->slug . '/';
+        
         $item
             ->title($p->title)
             ->description($p->body)
+            ->url($url)
             ->appendTo($channel);
     }
 

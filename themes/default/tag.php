@@ -1,4 +1,7 @@
-<?php get_header(); ?>
+<?php 
+	$title = 'Posts tagged ' . $tag;
+	get_header($title); 
+?>
 
 <h1>Posts tagged "<?= $tag ?>"</h1>
 		

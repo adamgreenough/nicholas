@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_header($post->title, $post->excerpt); ?>
 
 <article>
 	<img src="<?= $post->image; ?>" alt="<?= $post->title; ?>">

@@ -26,7 +26,7 @@ $router->map('GET','/json/', function() {
 });
 
 $router->map('GET','/rss/', function() { 
-	header('Content-type: application/json');
+	header('Content-type: application/xml');
 	echo generate_rss(get_posts());
 });
 

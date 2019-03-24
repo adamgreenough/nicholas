@@ -1,7 +1,7 @@
 <!doctype HTML>
 <html>
 <head>
-	<title><?= BLOG_NAME ?></title>
+	<title><?= $config['blog_name']; ?></title>
 	
 	<style>
 		* {
@@ -46,8 +46,8 @@
 <body>
 	<div id="main">
 		<div class="error">
-	    	<h1><?= BLOG_NAME ?></h1>
-	    	<p>Powered by <a href="https://github.com/adamgreenough/nicholas">Nicholas</a> ✨</p>
+	    	<h1><?= $config['blog_name']; ?></h1>
+	    	<p>Powered by <a href="https://nicholas.adgr.dev/">Nicholas</a> ✨</p>
 		</div>
 	</div>
 </body>

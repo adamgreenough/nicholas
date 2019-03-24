@@ -9,6 +9,9 @@ return array(
 // Posts per page
 'posts_per_page' => 4,
 
+// The direct URL to your blog without a trailing slash (eg. https://adgr.dev or https://adgr.dev/blog)
+'blog_url' => 'https://nicholas.dev1.adgr.dev',
+
 // The name of your blog
 'blog_name' => 'Nicholas Demo',
 
@@ -27,6 +30,9 @@ return array(
  
 // Date format
 'date_format' => 'jS F Y',
+
+// Page title seperator
+'title_seperator' => '|',
 
 /* ============================================
    Advanced Settings

@@ -23,10 +23,12 @@ function get_header($title = null, $description = null) {
 	
 	if($title == null) {
 		$title = $config['blog_name'];
+	} else {
+		$title = $title . ' ' . $config['title_seperator'] . ' ' . $config['blog_name']; 
 	}
 	
 	if($description == null) {
-		$title = $config['blog_description'];
+		$description = $config['blog_description'];
 	}
 	
 	require 'themes/' . $config['frontend_theme'] . '/header.php';

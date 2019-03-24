@@ -1,6 +1,6 @@
 <?php
 	
-// Load plugins from /plugins/ folder 
+// Load plugins (/x/x.php) from /plugins/ folder 
 function load_plugins() {
 	$plugins = array_filter(glob('plugins/*'), 'is_dir');
 	foreach($plugins as $plugin) {
