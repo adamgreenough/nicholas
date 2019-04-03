@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1dd0d68bbdef7fa50f4a37875dfbf7e0",
+    "content-hash": "87bce4aa662e8cfee9e9ec6dc976da3f",
     "packages": [
         {
             "name": "altorouter/altorouter",
@@ -63,16 +63,16 @@
         },
         {
             "name": "erusev/parsedown",
-            "version": "v1.8.0-beta-6",
+            "version": "1.8.0-beta-7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/erusev/parsedown.git",
-                "reference": "7d4c06cb520cca6d0c5a381eaa15bb5576593682"
+                "reference": "fe7a50eceb4a3c867cc9fa9c0aa906b1067d1955"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/erusev/parsedown/zipball/7d4c06cb520cca6d0c5a381eaa15bb5576593682",
-                "reference": "7d4c06cb520cca6d0c5a381eaa15bb5576593682",
+                "url": "https://api.github.com/repos/erusev/parsedown/zipball/fe7a50eceb4a3c867cc9fa9c0aa906b1067d1955",
+                "reference": "fe7a50eceb4a3c867cc9fa9c0aa906b1067d1955",
                 "shasum": ""
             },
             "require": {
@@ -105,7 +105,7 @@
                 "markdown",
                 "parser"
             ],
-            "time": "2019-03-17T17:19:07+00:00"
+            "time": "2019-03-17T18:47:21+00:00"
         },
         {
             "name": "erusev/parsedown-extra",
@@ -399,7 +399,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.2"
+        "php": ">=7.0"
     },
     "platform-dev": []
 }
