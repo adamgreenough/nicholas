@@ -18,7 +18,6 @@ I built Nicholas to be everything I wanted from a blogging system and nothing mo
 🖋 Write with Markdown Extra, HTML or a mixture of both  
 💻 Super simple read-only JSON API  
 📖 Optional front-end with ready-to-use theme included  
-🔏 Optional admin panel plugin available (coming soon)   
 📥 JSON & RSS feeds  
 🔖 Tag support  
 👋 Portable, drag & drop install with very little configuration  
