@@ -40,6 +40,17 @@ function get_footer() {
 	require 'themes/' . $config['frontend_theme'] . '/footer.php';
 }
 
+function get_post_link($post) {
+	$config = include('config.php'); 
+	$post_base = '';
+	
+	if($config['post_base']) {
+		$post_base = date('Y/m', $post->date) . '/';
+	}
+	
+	return $config['base_url']  . '/' . $post_base . $post->slug . '/';
+}
+
 function get_pagination_link($page, $posts, $tag = '') {
 	$config = include('config.php'); 
 	

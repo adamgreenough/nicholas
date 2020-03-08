@@ -69,7 +69,9 @@ function get_posts($page = 1, $perPage = null, $tag = null) {
 		// Split the date & slug from file name
 		$arr = explode('_', $v);
 		$post->date = strtotime(str_replace('posts/','',$arr[0]));
-		$post->slug = basename($arr[1], '.md');
+		if($arr[1]) {	
+			$post->slug = basename($arr[1], '.md');
+		}
 		
 		// Get the contents and convert it to HTML
 		$meta = $content->getData();
@@ -86,9 +88,11 @@ function get_posts($page = 1, $perPage = null, $tag = null) {
 }
 
 // Get the full contents of a single post
-function get_single($slug) {
+function get_single($slug, $year = '*', $month = '*') {
 	$frontMatter = new Webuni\FrontMatter\FrontMatter();
-	$single = get_post_list($slug);
+	$date = $year . '-' . $month . '-*';
+	
+	$single = get_post_list($slug, $date);
 	
 	if($single[0]) { // Check post exists
 	    $post = new stdClass;
