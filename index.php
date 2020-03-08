@@ -32,6 +32,20 @@ $router->map('GET','/rss/', function() {
 });
 
 /* ============================================
+   API
+ ============================================ */
+
+$router->map('GET','/api/feed/', function() { 
+	header('Content-type: application/json');
+	echo generate_json(api_feed());
+});
+
+$router->map('GET','/api/single/', function() { 
+	header('Content-type: application/json');
+	echo generate_json(api_single());
+});
+
+/* ============================================
    Front-end
  ============================================ */
 
@@ -101,20 +115,6 @@ if(!$config['use_frontend']) {
 		});	
 	}
 }
-
-/* ============================================
-   API
- ============================================ */
-
-$router->map('GET','/api/feed/', function() { 
-	header('Content-type: application/json');
-	echo generate_json(api_feed());
-});
-
-$router->map('GET','/api/single/', function() { 
-	header('Content-type: application/json');
-	echo generate_json(api_single());
-});
 
 /* ============================================
    Matching
