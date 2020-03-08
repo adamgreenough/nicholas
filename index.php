@@ -1,6 +1,7 @@
 <?php
 require_once 'vendor/autoload.php';
 require_once 'app/posts.php';
+require_once 'app/pages.php';
 require_once 'app/plugins.php';
 require_once 'app/generate.php';
 require_once 'app/api.php';
@@ -66,6 +67,16 @@ if(!$config['use_frontend']) {
 		}
 	});
 	
+	$router->map('GET','/page/[:page]/', function($page) { 
+		$config = include('config.php');
+		$page = get_page($page);
+		if($page->title) {
+			include 'themes/' . $config['frontend_theme'] . '/page.php';
+		} else {
+			error_404();
+		}
+	});
+
 	// Must be last to ensure other routes get detected first
 	$router->map('GET','/[:slug]/', function($slug) { 
 		$config = include('config.php');
