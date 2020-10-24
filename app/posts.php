@@ -15,6 +15,8 @@ function get_post_list($slug = '*', $date = '*') {
 function get_tag_list($tag) {
 	$frontMatter = new Webuni\FrontMatter\FrontMatter();
 
+	$tagList = array();
+
     static $postList = array();
 
     if(empty($postList)){
@@ -53,7 +55,7 @@ function get_posts($page = 1, $perPage = null, $tag = null) {
 	}
 	
 	// Check we found some posts
-	if(!$posts) {
+	if(empty($posts)) {
 	    return false;
 	}
 
@@ -76,7 +78,8 @@ function get_posts($page = 1, $perPage = null, $tag = null) {
 		// Get the contents and convert it to HTML
 		$meta = $content->getData();
 		$post->title = $meta['title'] ?? 'No title';
-		$post->body = convert_markdown($content->getContent());
+		$metaContent = $content->getContent();
+		$post->body = $metaContent ? convert_markdown($content->getContent()) : "";
 		$post->image = $meta['image'] ?? '';
 		$post->excerpt = $meta['excerpt'] ?? substr($post->body, 0, 140);
 		$post->tags = array_map('trim', explode(',', $meta['tags'] ?? '')) ?? ''; // Split tags on comma, trim whitespace
