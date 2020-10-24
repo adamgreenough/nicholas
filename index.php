@@ -107,7 +107,7 @@ if(!$config['use_frontend']) {
 		$router->map('GET','/[:slug]/', function($slug) { 
 			$config = include('config.php');
 			$post = get_single($slug);
-            if($post->title) {
+			if($post->title) {
 				include 'themes/' . $config['frontend_theme'] . '/single.php';
 			} else {
 				error_404();	
