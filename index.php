@@ -96,7 +96,7 @@ if(!$config['use_frontend']) {
 		$router->map('GET','/[:year]/[:month]/[:slug]/', function($year, $month, $slug) { 
 			$config = include('config.php');
 			$post = get_single($slug, $year, $month);
-			if($post->title) {
+			if($post && $post->title) {
 				include 'themes/' . $config['frontend_theme'] . '/single.php';
 			} else {
 				error_404();	
@@ -107,7 +107,7 @@ if(!$config['use_frontend']) {
 		$router->map('GET','/[:slug]/', function($slug) { 
 			$config = include('config.php');
 			$post = get_single($slug);
-			if($post->title) {
+            if($post && $post->title) {
 				include 'themes/' . $config['frontend_theme'] . '/single.php';
 			} else {
 				error_404();	
