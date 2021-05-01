@@ -18,7 +18,7 @@ function get_theme_directory_url() {
 	return $config['base_url'] . '/themes/' . $config['frontend_theme'];
 }
 
-function get_header($title = null, $description = null) {
+function get_header($title = null, $description = null, $image = null) {
 	$config = include('config.php'); 
 	
 	if($title == null) {
