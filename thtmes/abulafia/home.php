@@ -1,0 +1,38 @@
+<?php get_header(); ?>
+
+<div id="general-container">
+
+<div id="article-container">
+		
+<?php foreach ($posts as $post) { ?>	
+
+<article class="blog-preview">
+	<a href="<?= $config['base_url'] . '/' . $post->slug; ?>/">
+		<h2><?= $post->title; ?></h2>
+	</a>
+	<p><?= $post->excerpt; ?></p>
+	<p class="small"><?= date($config['date_format'], $post->date); ?> • Filed under <?= display_tag_list($post->tags); ?></p>
+</article>
+
+<?php } ?>
+
+</div>
+
+<div class="pagination">
+	<div class="prev">
+		<?php 
+			$prevLink = get_pagination_link($page, $posts)['prev'];
+			if($prevLink) { echo '<a href="' . $prevLink . '" title="Previous Page">&laquo; Newer Posts </a>'; }
+		?>	
+	</div>
+	<div class="next">
+		<?php 
+			$nextLink = get_pagination_link($page, $posts)['next'];
+			if($nextLink) { echo '<a href="' . $nextLink . '" title="Next Page">Older Posts &raquo;</a>'; }
+		?>	
+	</div>
+</div>
+
+</div>
+
+<?php get_footer(); ?>
