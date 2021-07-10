@@ -1,6 +1,7 @@
 ### simple setup
 
 this is the "abulafia" theme, it is mainly based on the nicholas default theme, but i will improve it from time to time.<br><br>
+life demo here: https://slexyt.cf/blog/<br><br>
 to set it up properly, you need to go to the main "config.php" file and change the `frontend_theme` from "default" to "abulafia".<br><br>
 by default the banner image is a beautiful night-sky in the anime-style. to change it, navigate to `themes/abulafia/header.php` and change in the `<img>` tag the `src="your-new-banner.png"` or what so ever your file is called.<br>
 keep in mind that it does not auto-resize heights, only width!<br><br>
