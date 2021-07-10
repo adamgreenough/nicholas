@@ -6,7 +6,7 @@
 			<a href="<?= $config['base_url'] ?>/json/">JSON</a>
 	    </nav>
 	    <p>
-		    Powered by <a href="https://nicholas.adgr.dev/" target="_blank">Nicholas</a> ✨ Abulafia Theme</a>
+		    Proudly powered by <a href="https://nicholas.adgr.dev/" target="_blank">Nicholas</a> ✨ <a href="https://github.com/saintly2k/nicholas/Abulafia Theme</a>
 		</p>
 	</footer>
 </body>
