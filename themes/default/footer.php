@@ -6,7 +6,7 @@
 			<a href="<?= $config['base_url'] ?>/json/">JSON</a>
 	    </nav>
 	    <p>
-		    Powered by <a href="https://nicholas.adgr.dev/">Nicholas</a> ✨
+		    Proudly powered by <a href="https://nicholas.adgr.dev/">Nicholas</a> ✨
 		</p>
 	</footer>
 </body>
