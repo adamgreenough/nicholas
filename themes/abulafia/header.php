@@ -11,16 +11,16 @@
 </head>
 <body>
 	
-	<header class="site-header" id="header-banner">
+	<!-- <header class="site-header" id="header-banner">
 	
 		<a href="<?= $config['base_url'] ?>/"><img src="<?= get_theme_directory_url(); ?>/assets/night-sky-banner.jpg" style="width:100%;border-radius:20px;"></a>
-		<!-- Some preset banners: 'sky-banner.jpg', 'night-sky-banner.jpg' -->
+		<!-- Some preset banners: 'sky-banner.jpg', 'night-sky-banner.jpg' ->
 	
-	</header>
-	<!-- <header class="site-header">
+	</header> -->
+	<header class="site-header">
 		<a href="<?= $config['base_url'] ?>/">
 			<div class="logo"><?= substr($config['blog_name'], 0, 1) ?></div> <?= $config['blog_name'] ?>
 		</a>
-	</header> -->
+	</header>
 	
 	<div class="container">
