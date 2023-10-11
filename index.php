@@ -81,14 +81,27 @@ if(!$config['use_frontend']) {
 		}
 	});
 	
-	$router->map('GET','/page/[:page]/', function($page) { 
+	$router->map('GET','/[:slug]/', function($slug) { 
 		$config = include('config.php');
-		$page = get_page($page);
+
+		// If post_base is not active, check posts by slug
+		if(!$config['post_base']) {
+			$post = get_single($slug);
+			if($post->title) {
+				include 'themes/' . $config['frontend_theme'] . '/single.php';
+				return;
+			}
+		}
+
+		// If no post was found search for page
+		$page = get_page($slug);
 		if($page->title) {
 			include 'themes/' . $config['frontend_theme'] . '/page.php';
-		} else {
-			error_404();
+			return;
 		}
+
+		// When no post and no page was found, return error 404.
+		error_404();
 	});
 
 	// Must be last to ensure other routes get detected first
@@ -102,17 +115,6 @@ if(!$config['use_frontend']) {
 				error_404();	
 			}
 		});
-	}
-	else {	
-		$router->map('GET','/[:slug]/', function($slug) { 
-			$config = include('config.php');
-			$post = get_single($slug);
-			if($post->title) {
-				include 'themes/' . $config['frontend_theme'] . '/single.php';
-			} else {
-				error_404();	
-			}
-		});	
 	}
 }
 
