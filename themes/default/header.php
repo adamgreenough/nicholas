@@ -24,4 +24,4 @@
 		</a>
 	</header>
 	
-	<div class="container">
+	<main class="container">
