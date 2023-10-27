@@ -23,7 +23,7 @@ I built Nicholas to be everything I wanted from a blogging system and nothing mo
 👋 Portable, drag & drop install with very little configuration  
 
 ## Requirements
-- PHP 7.2
+- >=PHP 7.2
 - mod_rewrite
 
 ## Getting Started
