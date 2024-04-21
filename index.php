@@ -1,5 +1,9 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 require_once 'vendor/autoload.php';
+require_once 'app/core.php';
 require_once 'app/posts.php';
 require_once 'app/pages.php';
 require_once 'app/plugins.php';
@@ -9,7 +13,7 @@ require_once 'app/api.php';
 $config = include('config.php');
 
 $router = new AltoRouter();
-$router->setBasePath($config['base_url']);
+$router->setBasePath($config['base_path']);
 
 /* ============================================
    Plugins
@@ -124,8 +128,8 @@ if(!$config['use_frontend']) {
 
 $match = $router->match();
 
-if($match) {
-	call_user_func_array( $match['target'], $match['params'] ); 
+if( is_array($match) && is_callable( $match['target'] ) ) {
+	call_user_func_array( $match['target'], $match['params'] );
 } else {
 	error_404();
 }
