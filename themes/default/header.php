@@ -19,7 +19,7 @@
 </head>
 <body>
 	<header class="site-header">
-		<a href="<?= $config['base_url'] ?>/">
+		<a href="<?= $config['base_path'] ?>/">
 			<div class="logo"><?= substr($config['blog_name'], 0, 1) ?></div> <?= $config['blog_name'] ?>
 		</a>
 	</header>

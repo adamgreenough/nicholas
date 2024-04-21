@@ -9,7 +9,11 @@ return array(
 'posts_per_page' => 4,
 
 // The direct URL to your blog without a trailing slash (eg. https://adgr.dev or https://adgr.dev/blog)
-'blog_url' => '',
+'blog_url' => 'https://example.com', 
+
+// If your Nicholas installation is not in the web root,
+// enter your folder name here with no preceding slash (eg. 'blog') 
+'base_path' => '',
 
 // The name of your blog
 'blog_name' => 'Nicholas Demo',
@@ -36,10 +40,6 @@ return array(
 /* ============================================
    Advanced Settings
  ============================================ */
-
-// If your Nicholas installation is not in the web root,
-// enter your folder name here with a preceding slash (eg. /blog)
-'base_url' => '/',
 
 // Prepend year and month to post URLs to help avoid slug conflicts?
 'post_base' => false

@@ -1,21 +1,9 @@
 <?php
 
-function error_404() {
-	$config = include('config.php'); 	
-	header("HTTP/1.0 404 Not Found");
-	
-	// If there's a custom 404 template in the theme, use that, if not, use default
-	if($config['use_frontend'] && file_exists('themes/' . $config['frontend_theme'] . '/404.php')) {
-		require 'themes/' . $config['frontend_theme'] . '/404.php';
-	} else {
-		require 'views/404.php';
-	}
-}
-
 function get_theme_directory_url() {
 	$config = include('config.php'); 
 	
-	return $config['base_url'] . '/themes/' . $config['frontend_theme'];
+	return $config['base_path'] . '/themes/' . $config['frontend_theme'];
 }
 
 function get_header($title = null, $description = null, $image = null) {
@@ -48,7 +36,7 @@ function get_post_link($post) {
 		$post_base = date('Y/m', $post->date) . '/';
 	}
 	
-	return $config['base_url']  . '/' . $post_base . $post->slug . '/';
+	return $config['base_path']  . '/' . $post_base . $post->slug . '/';
 }
 
 function get_pagination_link($page, $posts, $tag = '') {
@@ -62,12 +50,16 @@ function get_pagination_link($page, $posts, $tag = '') {
 	}
 	
 	if(($count / $config['posts_per_page']) > $page) {
-		$pagination['next'] = $config['base_url'] . '/' . $tag . ($page + 1) . '/';
+		$pagination['next'] = $config['base_path'] . '/' . $tag . ($page + 1) . '/';
+	} else {
+		$pagination['next'] = null;
 	}
 	
 	if($page > 1) {
-		$pagination['prev'] = $config['base_url'] . '/' . $tag . ($page - 1) . '/';
+		$pagination['prev'] = $config['base_path'] . '/' . $tag . ($page - 1) . '/';
+	} else {
+		$pagination['prev'] = null;
 	}
-	
+	 
 	return $pagination;
 }
