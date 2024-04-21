@@ -2,6 +2,8 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+$start_time = microtime(true);
+
 require_once 'vendor/autoload.php';
 require_once 'app/core.php';
 require_once 'app/posts.php';
@@ -133,3 +135,4 @@ if( is_array($match) && is_callable( $match['target'] ) ) {
 } else {
 	error_404();
 }
+

@@ -1,7 +1,7 @@
 <?php
 
 function error_404() {
-	$config = include('config.php'); 	
+	global $config;
 	header("HTTP/1.0 404 Not Found");
 	
 	// If there's a custom 404 template in the theme, use that, if not, use default

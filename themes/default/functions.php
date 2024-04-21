@@ -1,7 +1,7 @@
 <?php
 	
 function display_tag_list($tags) {
-	$config = include('config.php');
+	global $config;
 	$output = '';
 	
 	foreach ($tags as $tag) {

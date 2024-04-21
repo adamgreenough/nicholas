@@ -1,13 +1,13 @@
 <?php
 
 function get_theme_directory_url() {
-	$config = include('config.php'); 
+	global $config;
 	
 	return $config['base_path'] . '/themes/' . $config['frontend_theme'];
 }
 
 function get_header($title = null, $description = null, $image = null) {
-	$config = include('config.php'); 
+	global $config;
 	
 	if($title == null) {
 		$title = $config['blog_name'];
@@ -23,13 +23,13 @@ function get_header($title = null, $description = null, $image = null) {
 }
 
 function get_footer() {
-	$config = include('config.php'); 
+	global $config;
 	
 	require 'themes/' . $config['frontend_theme'] . '/footer.php';
 }
 
 function get_post_link($post) {
-	$config = include('config.php'); 
+	global $config;
 	$post_base = '';
 	
 	if($config['post_base']) {
@@ -40,7 +40,7 @@ function get_post_link($post) {
 }
 
 function get_pagination_link($page, $posts, $tag = '') {
-	$config = include('config.php'); 
+	global $config;
 	
 	if($tag) {
 		$count = count(get_tag_list($tag));
