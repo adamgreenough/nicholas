@@ -1,9 +1,9 @@
 <?php
-	
+use Michelf\MarkdownExtra;
+
 // Convert markdown to HTML
-function convert_markdown($content) {
-	$markdown = new ParsedownExtra();	
-	$content = $markdown->text($content);
+function convert_markdown($content) {	
+	$content = MarkdownExtra::defaultTransform($content);
 	return $content;
 }
 
