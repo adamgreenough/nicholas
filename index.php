@@ -91,7 +91,7 @@ if(!$config['use_frontend']) {
 		// If post_base is not active, check posts by slug
 		if(!$config['post_base']) {
 			$post = get_single($slug);
-			if($post->title) {
+			if(isset($post->title)) {
 				include 'themes/' . $config['frontend_theme'] . '/single.php';
 				return;
 			}
