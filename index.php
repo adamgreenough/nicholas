@@ -25,12 +25,12 @@ load_plugins();
    Subscription Feeds
  ============================================ */
 
-$router->map('GET','/json/', function() { 
+$router->map('GET|HEAD','/json/', function() { 
 	header('Content-type: application/json');
 	echo generate_json(get_posts());
 });
 
-$router->map('GET','/rss/', function() { 
+$router->map('GET|HEAD','/rss/', function() { 
 	header('Content-type: application/xml');
 	echo generate_rss(get_posts());
 });
@@ -39,12 +39,12 @@ $router->map('GET','/rss/', function() {
    API
  ============================================ */
 
-$router->map('GET','/api/feed/', function() { 
+$router->map('GET|HEAD','/api/feed/', function() { 
 	header('Content-type: application/json');
 	echo generate_json(api_feed());
 });
 
-$router->map('GET','/api/single/', function() { 
+$router->map('GET|HEAD','/api/single/', function() { 
 	header('Content-type: application/json');
 	echo generate_json(api_single());
 });
@@ -55,14 +55,14 @@ $router->map('GET','/api/single/', function() {
 
 // If the front-end option in config is set to false, skip the loading of frontend functionality
 if(!$config['use_frontend']) {
-	$router->map('GET','/', function() { 
+	$router->map('GET|HEAD','/', function() { 
 		require 'views/default.php';
 	});
 } else {
 	require_once 'app/frontend.php';
 	require_once 'themes/' . $config['frontend_theme'] . '/functions.php';
 	
-	$router->map('GET','/tag/[:tag]/[i:page]?/', function($tag, $page = 1) {
+	$router->map('GET|HEAD','/tag/[:tag]/[i:page]?/', function($tag, $page = 1) {
 		$config = include('config.php'); 
 		$posts = get_posts($page, $config['posts_per_page'], $tag);
 		$tag = str_replace('%20', ' ', $tag);
@@ -74,7 +74,7 @@ if(!$config['use_frontend']) {
 		}
 	});
 	
-	$router->map('GET','/[i:page]?/', function($page = 1) {
+	$router->map('GET|HEAD','/[i:page]?/', function($page = 1) {
 		$config = include('config.php'); 
 		$posts = get_posts($page);
 
@@ -85,7 +85,7 @@ if(!$config['use_frontend']) {
 		}
 	});
 	
-	$router->map('GET','/[:slug]/', function($slug) { 
+	$router->map('GET|HEAD','/[:slug]/', function($slug) { 
 		$config = include('config.php');
 
 		// If post_base is not active, check posts by slug
@@ -110,7 +110,7 @@ if(!$config['use_frontend']) {
 
 	// Must be last to ensure other routes get detected first
 	if($config['post_base']) {
-		$router->map('GET','/[:year]/[:month]/[:slug]/', function($year, $month, $slug) { 
+		$router->map('GET|HEAD','/[:year]/[:month]/[:slug]/', function($year, $month, $slug) { 
 			$config = include('config.php');
 			$post = get_single($slug, $year, $month);
 			if($post->title) {
