@@ -1,5 +1,4 @@
 <?php
-
 // Return list of all posts
 function get_post_list($slug = '*', $date = '*') {
     static $postList = array();

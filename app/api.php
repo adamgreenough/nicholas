@@ -1,5 +1,4 @@
 <?php
-	
 function api_feed() {
 	$page = $_GET['page'] ?? 1;
 	$perPage = $_GET['perpage'] ?? $config['posts_per_page'];

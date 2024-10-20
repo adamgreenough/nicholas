@@ -1,5 +1,4 @@
 <?php
-
 function error_404() {
 	global $config;
 	header("HTTP/1.0 404 Not Found");

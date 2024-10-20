@@ -1,5 +1,4 @@
 <?php
-
 function get_theme_directory_url() {
 	global $config;
 	

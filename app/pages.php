@@ -1,5 +1,4 @@
 <?php
-
 // Return list of all pages
 function get_page_list($slug = '*') {
 	static $pageList = array();
